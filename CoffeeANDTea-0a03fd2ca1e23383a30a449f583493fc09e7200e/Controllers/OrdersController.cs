@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeANDTea.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -68,7 +68,7 @@ namespace CoffeeANDTea.Controllers
         public IActionResult Create()
         {
             //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Id");
+            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Name");
             return View();
         }
 
