@@ -35,10 +35,11 @@
             @Html.DisplayFor(model => model.Bio)
         </dd>
         <dt class = "col-sm-2">
-            <img src="@Html.DisplayNameFor(model => model.Image)" width="200"/>
+            KARTINKA
+            @* @Html.DisplayNameFor(model => model.Image) *@
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+            <img src="@Html.DisplayFor(model => model.Image)" width="200" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)

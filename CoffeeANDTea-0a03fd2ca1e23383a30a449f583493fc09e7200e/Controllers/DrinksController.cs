@@ -17,12 +17,30 @@ namespace CoffeeANDTea.Controllers
         {
             _context = context;
         }
-
         // GET: Drinks
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Drinks.Include(d => d.DrinkCategories);
-            return View(await applicationDbContext.ToListAsync());
+            var applicationDbContext = _context.Drinks
+                .Include(d => d.DrinkCategories);
+            return View("Index", await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Drinks
+        public async Task<IActionResult> IndexTea()
+        {
+            var applicationDbContext = _context.Drinks
+                .Include(d => d.DrinkCategories)
+                .Where(d => d.DrinkCategoriesId == 1);
+            return View("Index",await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Drinks
+        public async Task<IActionResult> IndexCoffee()
+        {
+            var applicationDbContext = _context.Drinks.
+                Include(d => d.DrinkCategories).
+                Where(d => d.DrinkCategoriesId == 2); 
+            return View("Index",await applicationDbContext.ToListAsync());
         }
 
         // GET: Drinks/Details/5

@@ -16,13 +16,15 @@ namespace CoffeeANDTea.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Client> _userManager;
+        private readonly SignInManager<Client> _signInManager;
 
         public OrdersController(ApplicationDbContext context, UserManager<Client> userManager)
         {
             _context = context;
             _userManager = userManager;
+            //_signInManager = signInManager;
         }
-
+       
         // GET: Orders
         public async Task<IActionResult> Index()
         {
@@ -43,7 +45,7 @@ namespace CoffeeANDTea.Controllers
             }
 
         }
-
+       
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -63,7 +65,7 @@ namespace CoffeeANDTea.Controllers
 
             return View(order);
         }
-
+     
         // GET: Orders/Create
         public IActionResult Create()
         {
@@ -77,7 +79,7 @@ namespace CoffeeANDTea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DrinksId,Quantity,DateUpdate")] Order order)
+        public async Task<IActionResult> Create([Bind("Quantity")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -88,10 +90,10 @@ namespace CoffeeANDTea.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", order.ClientsId);
-            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Id", order.DrinksId);
+            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Name", order.DrinksId);
             return View(order);
         }
-
+    
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -106,7 +108,7 @@ namespace CoffeeANDTea.Controllers
                 return NotFound();
             }
             //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", order.ClientsId);
-            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Id", order.DrinksId);
+            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Name", order.DrinksId);
             return View(order);
         }
 
@@ -115,7 +117,7 @@ namespace CoffeeANDTea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DrinksId,Quantity,DateUpdate")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DrinksId,Quantity")] Order order)
         {
             if (id != order.Id)
             {
@@ -145,7 +147,7 @@ namespace CoffeeANDTea.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", order.ClientsId);
-            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Id", order.DrinksId);
+            ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Name", order.DrinksId);
             return View(order);
         }
 
