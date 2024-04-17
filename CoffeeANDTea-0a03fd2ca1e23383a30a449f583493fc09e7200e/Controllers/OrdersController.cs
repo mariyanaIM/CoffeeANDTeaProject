@@ -73,6 +73,19 @@ namespace CoffeeANDTea.Controllers
             ViewData["DrinksId"] = new SelectList(_context.Drinks, "Id", "Name");
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateWithDrinkId(int drinkId, int countP)
+        {
+            //int c = int.Parse( ViewBag.counter);
+            //return View();
+            Order order = new Order();
+            order.DrinksId = drinkId;
+            order.Quantity = countP;
+            order.ClientsId = _userManager.GetUserId(User);
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

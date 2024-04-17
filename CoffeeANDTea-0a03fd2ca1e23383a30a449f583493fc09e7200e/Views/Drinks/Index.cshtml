@@ -72,6 +72,10 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
+            <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
+                <input name="countP" id="ccount" type="number" width="3" value="1" style="color:red; font:bold" /> Броя
+                <input type="submit" value="Order" />
+            </form>
 }
     </tbody>
 </table>
