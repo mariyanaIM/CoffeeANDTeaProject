@@ -18,5 +18,26 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #E2E17F;
+    
+}
+.SnimkaHome img{
+    max-width:100%;
+    height:auto;
+    border-radius:2%;
+}
+.Heading h1{
+    position:absolute;
+    text-align:center;
+    left:52.5%;
+    padding:10px 20px;
+    color:#AA8626;
+    font-size:25px;
+    font-family:cursive;
+    text-shadow:3px 3px black;
+    transform:translate(-50%, -50%)
+}
+.table{
+    border-color: black;
 }

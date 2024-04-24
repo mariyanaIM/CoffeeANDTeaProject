@@ -1,8 +1,52 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<style>
+    .aboutus img{
+        max-width: 350px;
+        height:auto;
+        box-shadow: 2px 2px black, 3px 3px black;
+        border-radius: 10px;
+    }
+    #image1 img{
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+    #image2 img{
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    .aboutustext, .aboutusimage{
+        width: 33%;
+    }
+    
+    .aboutustext{
+        font-size: 18px;
+    }
+</style>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <center>
+        <h1>
+            🍵 Добре дошли в "CoffeeAndTea" ☕
+        </h1>
+    </center>
+    <div class="SnimkaHome">
+        <img src="https://c4.wallpaperflare.com/wallpaper/487/322/551/food-breakfast-coffee-croissant-wallpaper-preview.jpg" />
+    </div>
+    <hr size="4"/>
+
+    <div class="aboutus" style="display: flex; flex-direction: row; justify-content: space-evenly;">
+        <div id="image1"class="aboutusimage"><img src="https://media.cnn.com/api/v1/images/stellar/prod/150929101049-black-coffee-stock.jpg?q=w_3000,h_3074,x_0,y_0,c_fill" /></div>
+        <div class="aboutustext">
+            <span style="display: flex; justify-content: center; font-size: 20px; font-weight: bold; border-bottom:2px solid black;">За нас:</span>
+            <p style="">
+            Ние от Coffee & Tea  имаме удоволствието да ви предложим богат асортимент от специално селектирани премиум чайове,
+            като сме подбрали за вас само и единствено най-доброто, не само откъм всусово отношение, но и в здравословен план.
+            В нашия онлайн магазин ще откриете ароматни и екзотични видове разнообразни и висококачествени насипни чайове, сред които черен, зелен, билков, бял чай и много други.
+            </p>
+        </div>
+        <div id="image2" class="aboutusimage"><img src="https://artfultea.com/cdn/shop/articles/BC_2B-_2BAssam_2B_28cup_29_2B_281055_29.jpg?v=1664455870&width=1920" /></div>
+    </div>
+
+    <hr size="4" />
 </div>

@@ -8,11 +8,71 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CoffeeANDTea.styles.css" asp-append-version="true" />
 </head>
+<style>
+    
+
+    footer {
+        background-color: #B5B44F;
+        border: 3px solid black;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 8px 16px;
+        position: absolute;
+        top: 100%;
+        flex-wrap: wrap;
+    }
+
+    .footer-info {
+        width: 25%;
+    }
+
+    .footer-info-title {
+        font-family: cursive;
+        font-size: 20px;
+        color: white;
+        text-shadow: 1px 1px black, 2px 2px black;
+    }
+
+    .socials-icons {
+        padding: 10px;
+    }
+
+    .socials-text {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .socials-title {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        text-align: center !important;
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .socials-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .maps{
+        display: flex;
+        justify-content: center;
+    }
+    iframe{
+        border-radius: 50%;
+    }
+</style>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoffeeANDTea</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="<img src="https://ibb.co/Hd6qr9Q" width="50px" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,16 +88,17 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="DrinkCategories" asp-action="Index">Категории напитки</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexTea">Видове ЧАЙ</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexTea">Видове ЧАЙ и Сортове КАФЕ</a>
                             </li>
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexCoffee">Сортове КАФЕ</a>
-                            </li>
+                            </li> *@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Пазарска кошница</a>
                             </li>
                         </ul>
-                    }else
+                    }
+                    else
                     {
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
@@ -47,11 +108,11 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="DrinkCategories" asp-action="Index">Категории напитки</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexTea">Видове ЧАЙ</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexTea">Видове ЧАЙ и Сортове КАФЕ </a>
                             </li>
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Drinks" asp-action="IndexCoffee">Сортове КАФЕ</a>
-                            </li>
+                            </li> *@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Пазарска кошница</a>
                             </li>
@@ -68,9 +129,55 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - CoffeeANDTea - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer text-muted" style="bottom: auto;">
+        <div class="footer-info">
+            <div class="socials-title">
+                <span class="footer-info-title">Контакти</span>
+                <div class="socials">
+                    <div class="socials-container">
+                        <div class="socials-icons"><img src="https://static.vecteezy.com/system/resources/previews/020/009/614/original/email-and-mail-icon-black-free-png.png" width="50" /></div>
+                        <div class="socials-text"><span style="font-family: cursive;">CandT@abv.bg</span></div>
+                    </div>
+                </div>
+                <div class="socials">
+                    <div class="socials-container">
+                        <div class="socials-icons"><a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/15/15407.png" width="50" /></a></div>
+                        <div class="socials-text"><span style="font-family: cursive;">0895641258</span></div>
+                    </div>
+                </div>
+                <div class="socials">
+                    <div class="socials-container">
+                        <div class="socials-icons"><a href="https://instagram.com"><img src="https://freesvg.org/img/noun-project-462.png" width="50" /></a></div>
+                        <div class="socials-text"><span style="font-family: cursive;">гр. Сопот</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="socials-title">
+                <span class="footer-info-title">Адрес</span>
+                <div class="maps">
+                    <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23475.55025282867!2d24.723058474316392!3d42.65195030000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a9978450cd9365%3A0x45fa03a3839ec4dd!2z0JrQsNGE0LUt0LDQv9C10YDQuNGC0LjQsiBDb3JuZXI!5e0!3m2!1sbg!2sbg!4v1713942397186!5m2!1sbg!2sbg" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="socials-title">
+                <span class="footer-info-title">Социални мрежи</span>
+                <div class="socials">
+                    <div class="socials-container">
+                        <div class="socials-icons"><a href="https://instagram.com"><img src="https://cdn4.iconfinder.com/data/icons/picons-social/57/38-instagram-2-512.png" width="50" /></a></div>
+                        <div class="socials-text"><span style="font-family: cursive;">instagram.com</span></div>
+                    </div>
+                </div>
+                <div class="socials">
+                    <div class="socials-container">
+                        <div class="socials-icons"><a href="https://facebook.com"><img src="https://seeklogo.com/images/F/facebook-icon-black-logo-133935095E-seeklogo.com.png" width="50" /></a></div>
+                        <div class="socials-text"><span style="font-family: cursive;">facebook.com</span></div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

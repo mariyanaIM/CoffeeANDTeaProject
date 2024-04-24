@@ -4,37 +4,46 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<center><h1>Напитки</h1></center>
+@if (User.IsInRole("Admin"))
+{
+    <center><a class="btn btn-primary" asp-action="Create">Създаване на нова напитка</a></center>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Име
+               @*  @Html.DisplayNameFor(model => model.Name) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DrinkCategories)
+                Категория
+                @* @Html.DisplayNameFor(model => model.DrinkCategories) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Coffein)
+                Кофеин
+               @*  @Html.DisplayNameFor(model => model.Coffein) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Bio)
+                Био
+               @*  @Html.DisplayNameFor(model => model.Bio) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                Изображение
+                @* @Html.DisplayNameFor(model => model.Image) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Описание
+               @*  @Html.DisplayNameFor(model => model.Description) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Цена
+               @*  @Html.DisplayNameFor(model => model.Price) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateUpdate)
+                Дата
+                @* @Html.DisplayNameFor(model => model.DateUpdate) *@
             </th>
             <th></th>
         </tr>
@@ -67,15 +76,21 @@
                 @Html.DisplayFor(modelItem => item.DateUpdate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
+                            <input name="countP" id="ccount" type="number" width="3" value="1" style="color:red; font:bold" /> Броя
+                            <input type="submit" value="Поръчай" />
+                        </form>
+                    }
+                @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
             </td>
+                
         </tr>
-            <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
-                <input name="countP" id="ccount" type="number" width="3" value="1" style="color:red; font:bold" /> Броя
-                <input type="submit" value="Order" />
-            </form>
+      
+           
 }
     </tbody>
 </table>
