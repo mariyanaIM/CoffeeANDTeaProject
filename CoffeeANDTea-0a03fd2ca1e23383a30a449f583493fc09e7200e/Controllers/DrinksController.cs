@@ -18,11 +18,16 @@ namespace CoffeeANDTea.Controllers
             _context = context;
         }
         // GET: Drinks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? catageryNum)
         {
-            var applicationDbContext = _context.Drinks
-                .Include(d => d.DrinkCategories);
-            return View("Index", await applicationDbContext.ToListAsync());
+            var applicationDbContext =await _context.Drinks
+                .Include(d => d.DrinkCategories).ToListAsync();
+            if (catageryNum != null)
+            {
+                applicationDbContext = applicationDbContext
+                    .Where(x => x.DrinkCategoriesId == catageryNum).ToList();
+            }
+            return View("Index",  applicationDbContext);
         }
 
         // GET: Drinks
