@@ -5,10 +5,10 @@
 }
 
 <center><h1>Напитки</h1></center>
-@if (User.IsInRole("Admin"))
-{
+@* @if (User.IsInRole("Admin"))
+{ *@
     <center><a class="btn btn-primary" asp-action="Create">Създаване на нова напитка</a></center>
-}
+@* } *@
 
 <table class="table">
     <thead>
@@ -76,16 +76,16 @@
                 @Html.DisplayFor(modelItem => item.DateUpdate)
             </td>
             <td>
-                    @if (!User.IsInRole("Admin"))
+                    @if (User.IsInRole("Admin") && User.IsInRole("User"))
                     {
                         <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
                             <input name="countP" id="ccount" type="number" width="3" value="1" style="color:red; font:bold" /> Броя
                             <input type="submit" value="Поръчай" />
                         </form>
                     }
-                @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
                 
         </tr>

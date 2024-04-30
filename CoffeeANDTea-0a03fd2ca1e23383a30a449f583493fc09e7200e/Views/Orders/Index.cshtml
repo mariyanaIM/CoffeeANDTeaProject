@@ -4,25 +4,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1></h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добави нова напитка</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Clients)
+                Клиент
+               @*  @Html.DisplayNameFor(model => model.Clients) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Drinks)
+                Напитка/и
+               @*  @Html.DisplayNameFor(model => model.Drinks) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                Количество
+               @*  @Html.DisplayNameFor(model => model.Quantity) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateUpdate)
+                Дата на направената поръчка
+                @* @Html.DisplayNameFor(model => model.DateUpdate) *@
             </th>
             <th></th>
         </tr>
