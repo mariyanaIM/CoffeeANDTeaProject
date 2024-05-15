@@ -79,6 +79,7 @@ namespace CoffeeANDTea.Controllers
             //int c = int.Parse( ViewBag.counter);
             //return View();
             Order order = new Order();
+            order.DateUpdate = DateTime.Now;
             order.DrinksId = drinkId;
             order.Quantity = countP;
             order.ClientsId = _userManager.GetUserId(User);

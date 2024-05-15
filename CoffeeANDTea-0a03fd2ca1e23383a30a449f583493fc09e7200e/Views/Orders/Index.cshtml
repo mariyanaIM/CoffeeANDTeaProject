@@ -4,16 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1></h1>
+<center><h1>Пазарска кошница</h1></center>
 
-<p>
-    <a asp-action="Create">Добави нова напитка</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                Клиент
+                Потребителско име на клиент
                @*  @Html.DisplayNameFor(model => model.Clients) *@
             </th>
             <th>
@@ -35,7 +33,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Clients.Id)
+                @Html.DisplayFor(modelItem => item.Clients.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Drinks.Id)

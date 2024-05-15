@@ -18,6 +18,8 @@
         flex-direction: column;
         border: 2.5px solid #878747;
         margin-bottom: 50px;
+        border-radius: 10px;
+        overflow: hidden;
     }
 
         .drink img {
@@ -52,33 +54,49 @@
         flex-direction: column;
         align-items: center;
     }
-    .order-button{
+
+    .order-button {
         display: flex;
         flex-direction: row;
         justify-content: center;
         margin-bottom: 10px;
-    #ccount{
+        #ccount
+
+    {
         width: 50%;
     }
-    #order{
+
+    #order {
         width: 48%;
     }
-    #createdrink a{
+
+    #createdrink a {
         background-color: #B2B263;
         border-color: #B2B263;
     }
-    #createdrink a:hover{
+
+        #createdrink a:hover {
             background-color: #878747;
             border-color: #878747;
+        }
+
+    .buttons a {
+        background-color: #34ab2e;
+        border-color: #34ab2e;
+    }
+
+        .buttons a:hover {
+            background-color: #2f912a;
+            border-color: #2f912a;
         }
 </style>
 <center><h1>Напитки</h1></center>
 @if (User.IsInRole("Admin"))
-{ 
+{
     <div id="createdrink">
-    <center><a class="btn btn-primary" asp-action="Create">Създаване на нова напитка</a></center>
-</div>
- }
+        <center><a class="btn btn-primary" asp-action="Create">Създаване на нова напитка</a></center>
+    </div>
+}
 
 <div class="drink-cards">
     @foreach (var item in Model)
@@ -114,19 +132,27 @@
             <div class="drink-price">
                 <div><span>@Html.DisplayFor(model => item.Price) лв.</span></div>
             </div>
-            
-            @if (User.IsInRole("Admin") && User.IsInRole("User"))
+
+
+
+            <div class="order-button">
+                <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
+                    <input name="countP" id="ccount" type="number" width="3" value="1" />
+                    <input id="order" type="submit" value="Поръчай" />
+                </form>
+
+            </div>
+            @if (User.IsInRole("Admin"))
             {
-                <div class="order-button">
-                    <form method="post" asp-controller="Orders" asp-action="CreateWithDrinkId" asp-route-drinkId="@item.Id">
-                        <input name="countP" id="ccount" type="number" width="3" value="1" />
-                        <input id="order" type="submit" value="Поръчай" />
-                    </form>
-@*                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
-                </div>
+                <a class="buttons btn btn-primary " asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <br />
+                <a class="buttons btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <br />
+                <a style="background-color:#b02a37; border-color: #b02a37;" class="btn btn-danger delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             }
         </div>
-        }
+    }
 </div>
+@*  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@ 
